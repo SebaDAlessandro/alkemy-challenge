@@ -2,12 +2,14 @@ import React from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { useNavigate } from 'react-router-dom'
 
 
 const MySwal = withReactContent(Swal)
 
 const Login = () => {
 
+    const navigate = useNavigate()
 
     const submitHandler = (e)=>{
         e.preventDefault()
@@ -62,7 +64,7 @@ const Login = () => {
                     Importante: con localStorage.getItem('key') obtengo el value de esa llavae
                     para vaciarlo: localStorage.clear() -> sino queda guardado for ever! 
                     */
-
+                navigate('/lista')
             })        
     }
 
@@ -71,7 +73,7 @@ const Login = () => {
         <h2>Formulario de login</h2>
         <form onSubmit={submitHandler}>
             <label>
-                <span>Correo electrónico:</span> <br />
+                <span>Correo electrónico: challenge@alkemy.org</span> <br />
                 <input 
                 type='text'
                 name='email'
