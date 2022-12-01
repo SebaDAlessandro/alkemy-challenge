@@ -1,0 +1,14 @@
+.header__container {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+}
+
+.nav__link {
+    text-decoration: none;
+    padding: 0 5px;
+}
+
+.logout {
+    font-size: 12px;
+}

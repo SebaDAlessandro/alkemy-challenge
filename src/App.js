@@ -1,9 +1,10 @@
 //components
 import { Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
-import Lista from './components/Lista'
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Login from "./components/login/Login";
+import Lista from './components/lista/Lista'
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import Detalle from "./components/detalle/Detalle";
 
 //styles
 import './styles/app.css'
@@ -13,9 +14,11 @@ function App() {
   return (
     <>
     <Header />
-    <Routes>
+    <Routes className='container mt-3'>
+      <Route path="*" element={<Login />} />
       <Route path='/' element={<Login />} />
       <Route path='/lista' element={<Lista />} />
+      <Route path='/detalle/:id' element={<Detalle />} />
     </Routes>
     <Footer />
     </>

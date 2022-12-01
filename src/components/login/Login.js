@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { useNavigate } from 'react-router-dom'
-
+import './login.css'
 
 const MySwal = withReactContent(Swal)
 
@@ -59,7 +59,7 @@ const Login = () => {
                     confirmButtonText: "Ok",
                 })
                 const token = res.data.token
-                localStorage.setItem('token', token)/*localStorage.setItem = recibe dos propiedades(es un objeto... por lo tanto,
+                sessionStorage.setItem('token', token)/*localStorage.setItem = recibe dos propiedades(es un objeto... por lo tanto,
                     key y value): el nombre con el que se va a guardar y el valor del mismo
                     Importante: con localStorage.getItem('key') obtengo el value de esa llavae
                     para vaciarlo: localStorage.clear() -> sino queda guardado for ever! 
@@ -68,15 +68,23 @@ const Login = () => {
             })        
     }
 
+    const token = sessionStorage.getItem('token')
+
+    useEffect(() => {
+        token && navigate('/lista')
+    }, [token, navigate]);
+
   return (
     <>
+    <section className={!token ? 'login__container' : 'noLogin'}>
         <h2>Formulario de login</h2>
-        <form onSubmit={submitHandler}>
+        <form  className='login__form' onSubmit={submitHandler}>
             <label>
-                <span>Correo electrónico: challenge@alkemy.org</span> <br />
+                <span>Correo electrónico:</span> <br />
                 <input 
                 type='text'
                 name='email'
+                value='challenge@alkemy.org'
                 />
             </label>
             <br />
@@ -88,8 +96,9 @@ const Login = () => {
                 />
             </label>
             <br />
-            <button type="submit">Ingresar</button>
+            <button className='login__btn' type="submit">Ingresar</button>
         </form>
+    </section>
     </>
   )
 }
