@@ -45,7 +45,8 @@ const Detalle = () => {
             <h1 className='title'>{movie.title}</h1>
             <div className='detalle__secciones'>
                 <div className='img__container'>
-                    <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className='img__featurs' alt='img'/>
+                    <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className={movie.backdrop_path ? 'img__featurs':'img__featurs-none'} alt='img'/>
+                    {!movie.backdrop_path && <p>Not image yet</p>}
                 </div>
                 <div className='items__container'>
                     <h5 className='item__overview'>{ movie.overview }</h5>
@@ -55,7 +56,7 @@ const Detalle = () => {
                     <ul>
                         { movie.genres.map((oneGenre, index) => <li className='item__value' key={index}>{oneGenre.name}</li>) }
                     </ul> 
-                    {movie.homepage && <a className='item__value-link' href={movie.homepage} target='_blank'>Ir a la Pagina Oficial</a>} 
+                    {movie.homepage && <a href={movie.homepage} className='item__value-link' target = '_blank' rel="noopener noreferrer">Ir a la Pagina Oficial</a>} 
                 </div>
             </div>
         </div>

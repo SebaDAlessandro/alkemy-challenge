@@ -38,7 +38,8 @@ const Lista = () => {
       {movies.map((movie, index)=>{
         return(
           <div className='lista__card' key={index} >
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className='card__img' alt='img' />
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className={movie.backdrop_path ? 'card__img':'card__img-none'} alt='img' />
+            {!movie.backdrop_path && <p>Not image yet</p>}
             <div className='card__body'>
               <h5 className='card__title'>{movie.title}</h5>
               <p className='card__text'>{movie.overview.substring(0,100)}...</p>

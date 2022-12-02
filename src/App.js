@@ -5,6 +5,7 @@ import Lista from './components/lista/Lista'
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Detalle from "./components/detalle/Detalle";
+import Resultados from "./components/resultados/Resultados";
 
 //styles
 import './styles/app.css'
@@ -19,6 +20,7 @@ function App() {
       <Route path='/' element={<Login />} />
       <Route path='/lista' element={<Lista />} />
       <Route path='/detalle/:id' element={<Detalle />} />
+      <Route path='/resultados/:keyword' element={<Resultados />} />
     </Routes>
     <Footer />
     </>

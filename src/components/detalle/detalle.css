@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0 20px;
-    padding-top: 60px;
+    padding-top: 95px;
     padding-bottom: 20px;
     min-height: 81vh;
     background: black;
@@ -21,6 +21,10 @@
 
 .img__featurs {
     width: 100%;
+}
+
+.img__featurs-none {
+    display: none;
 }
 
 .items__container {
