@@ -35,6 +35,24 @@
     display: none;
 }
 
+.card__favorite-btn {
+    width: 30px;
+    height: 30px;
+    background: #f2f2f2;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    top: 10px;
+    position: relative;
+    font-size: 13px;
+}
+
+.select {
+    color: red;
+}
+
 .card__title {
     color: antiquewhite;
     padding: 15px 0;

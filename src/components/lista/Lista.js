@@ -9,7 +9,7 @@ import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
 
 
-const Lista = () => {
+const Lista = ({ addOrRemoveFrontFavs }) => {
   const [movies, setMovies] = useState([]);
   const token = sessionStorage.getItem('token')
   const navigate = useNavigate()
@@ -37,18 +37,27 @@ const Lista = () => {
     <div className={!token ? 'noLista' : 'lista__container'}>
       {movies.map((movie, index)=>{
         return(
+          <>
           <div className='lista__card' key={index} >
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className={movie.backdrop_path ? 'card__img':'card__img-none'} alt='img' />
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className={movie.backdrop_path ? 'card__img':'card__img-none'} alt='img' id='imagen'/>
             {!movie.backdrop_path && <p>Not image yet</p>}
+            <button
+              onClick={ addOrRemoveFrontFavs }
+              className='card__favorite-btn'
+              data-movie-id = {movie.id}
+              >
+                <span class="material-symbols-outlined">favorite</span>
+            </button>
             <div className='card__body'>
               <h5 className='card__title'>{movie.title}</h5>
               <p className='card__text'>{movie.overview.substring(0,100)}...</p>
               <Link to={`/detalle/${movie.id}`} className='btn btn-primary'>View detail</Link>
             </div>
           </div>
+          </>
         )
-      })}
-
+      })
+      }
     </div>
     </>
   )
