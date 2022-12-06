@@ -10,7 +10,7 @@ import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal)
 
-const Resultados = () => {
+const Resultados = ({ addOrRemoveFrontFavs }) => {
     const { keyword } = useParams('keyword')
     const token = sessionStorage.getItem('token')
     const [ moviesFound, setMoviesFound ] = useState([])
@@ -21,7 +21,6 @@ const Resultados = () => {
 
         axios.get(endPoint)
         .then(res => {
-            console.log(res.data);
             const movies = res.data
             setMoviesFound(movies.results)
         })
@@ -46,6 +45,13 @@ const Resultados = () => {
             <div className='lista__card' key={index} >
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className={movie.backdrop_path ? 'card__img':'card__img-none'} alt='img' />
                 {!movie.backdrop_path && <p>Not image yet</p>}
+                <button
+                    onClick={ addOrRemoveFrontFavs }
+                    className='card__favorite-btn'
+                    data-movie-id = {movie.id}
+                    >
+                    <span class="material-symbols-outlined">favorite</span>
+                </button>
                 <div className='card__body'>
                     <h5 className='card__title'>{movie.title}</h5>
                     <p className='card__text'>{movie.overview.substring(0,100)}...</p>

@@ -10,7 +10,7 @@ import { Button, Form } from 'react-bootstrap';
 
 const MySwal = withReactContent(Swal)
 
-const Header = () => {
+const Header = ({ favorites }) => {
 
   const navigate = useNavigate()
 
@@ -54,16 +54,17 @@ const Header = () => {
     <header className='header__container'>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand>Alkemy Movies SPA</Navbar.Brand>
+          <Navbar.Brand className='header__container-title'>Alkemy Movies SPA</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <NavLink className='nav__link' to='/'>Home</NavLink>
               <NavLink className='nav__link' to='/lista'>Lista</NavLink>
               <NavLink className='nav__link' to='/contacto'>Contacto</NavLink>
+              <NavLink className='nav__link' to='/favoritos'>Favoritos {favorites.length}</NavLink>
             </Nav>
             <Nav>
-              <Nav.Link className='logout'><span onClick={logout}>logout</span></Nav.Link>
+              <Nav.Link className='logout'><span className='logout-a' onClick={logout}>logout</span></Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <Form className="d-flex" onSubmit={submitHandler}>

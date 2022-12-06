@@ -9,7 +9,7 @@ import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
 
 
-const Detalle = () => {
+const Detalle = ({ addOrRemoveFrontFavs }) => {
 
     const { id } = useParams()
     const [ movie, setMovie ] = useState(null)
@@ -34,7 +34,6 @@ const Detalle = () => {
         !token && navigate('/')
     },[id, navigate, token])
 
-    console.log(movie);
 
   return (
 

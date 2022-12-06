@@ -4,13 +4,27 @@
     width: 100%;
 }
 
+.header__container-title {
+    display: none;
+}
+
 .nav__link {
     text-decoration: none;
     padding: 0 5px;
+    color: rgb(255, 255, 255, 0.55);
 }
 
-.logout {
-    font-size: 12px;
+.nav__link:hover {
+    color: rgb(255, 255, 255);
+}
+
+.logout-a {
+    color: rgb(255, 255, 255, 0.55);
+    font-size: 14px;
+}
+
+.logout-a:hover {
+    color: rgb(255, 255, 255);
 }
 
 .d-flex {
